@@ -1,4 +1,6 @@
 .idea
 .settings
+.mvn
 bin
+gradle
 target
