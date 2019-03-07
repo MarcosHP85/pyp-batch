@@ -36,11 +36,11 @@ import org.springframework.core.io.FileSystemResource;
 @EnableBatchProcessing
 public class BatchConfiguration {
 
-	public static final String QUERY = "SELECT WO_NO,STATE,WO_NO_MADRE,REAL_F_DATE,CONTRACT,SUBESTADO_PLANIF,COM_INT_PLA,PLAN_F_DATE,PLAN_S_DATE,MCH_CODE,ORG_CODE,TIPO_PARADA,WORK_TYPE_ID,PRIORITY_ID,TAREA,CATEGORY_ID,REG_DATE,FIRMA_PAQ_TRAB,WORK_LEADER_SIGN,CONFIRMACION_1,PREPARED_BY,COM_INT_PRO,MCH_LOC,MCH_POS,COM_PLA_PRO,COM_IMP_PLA,COM_IMP_PRO,REQ_PAQ_TAB,PALABRA_CLAVE,NOTAS_MOTIVO,EQUIPOS_INDISPONIBLES,REQUIERE_QC,NOVEDAD_SEMANAL,AGRUP_PROG"
+	public static final String QUERY = "SELECT WO_NO,STATE,WO_NO_MADRE,REAL_F_DATE,CONTRACT,SUBESTADO_PLANIF,COM_INT_PLA,PLAN_F_DATE,PLAN_S_DATE,MCH_CODE,ORG_CODE,TIPO_PARADA,WORK_TYPE_ID,PRIORITY_ID,TAREA,CATEGORY_ID,REG_DATE,FIRMA_PAQ_TRAB,WORK_LEADER_SIGN,CONFIRMACION_1,PREPARED_BY,COM_INT_PRO,MCH_LOC,MCH_POS,COM_PLA_PRO,COM_IMP_PLA,COM_IMP_PRO,REQ_PAQ_TAB,PALABRA_CLAVE,NOTAS_MOTIVO,EQUIPOS_INDISPONIBLES,REQUIERE_QC,NOVEDAD_SEMANAL,AGRUP_PROG,TIPO_PAQ_TRAB,COMENT_OTRAS_AREAS,REVISION_PAQ_TRAB"
 			+ " FROM ifsata.ACTIVE_SEPARATE_OVERVIEW"
 			+ " where CONTRACT in (2000, 4000)"
 			+ " union "
-			+ "SELECT WO_NO,'Cancelado' as STATE,WO_NO_MADRE,REAL_F_DATE,CONTRACT,SUBESTADO_PLANIF,COM_INT_PLA,PLAN_F_DATE,PLAN_S_DATE,MCH_CODE,ORG_CODE,TIPO_PARADA,WORK_TYPE_ID,PRIORITY_ID,TAREA,CATEGORY_ID,REG_DATE,FIRMA_PAQ_TRAB,WORK_LEADER_SIGN,CONFIRMACION_1,PREPARED_BY,COM_INT_PRO,MCH_LOC,MCH_POS,COM_PLA_PRO,COM_IMP_PLA,COM_IMP_PRO,REQ_PAQ_TAB,PALABRA_CLAVE,NOTAS_MOTIVO,EQUIPOS_INDISPONIBLES,REQUIERE_QC,NOVEDAD_SEMANAL,AGRUP_PROG"
+			+ "SELECT WO_NO,'Cancelado' as STATE,WO_NO_MADRE,REAL_F_DATE,CONTRACT,SUBESTADO_PLANIF,COM_INT_PLA,PLAN_F_DATE,PLAN_S_DATE,MCH_CODE,ORG_CODE,TIPO_PARADA,WORK_TYPE_ID,PRIORITY_ID,TAREA,CATEGORY_ID,REG_DATE,FIRMA_PAQ_TRAB,WORK_LEADER_SIGN,CONFIRMACION_1,PREPARED_BY,COM_INT_PRO,MCH_LOC,MCH_POS,COM_PLA_PRO,COM_IMP_PLA,COM_IMP_PRO,REQ_PAQ_TAB,PALABRA_CLAVE,NOTAS_MOTIVO,EQUIPOS_INDISPONIBLES,REQUIERE_QC,NOVEDAD_SEMANAL,AGRUP_PROG,TIPO_PAQ_TRAB,COMENT_OTRAS_AREAS,REVISION_PAQ_TRAB"
 			+ " FROM ifsata.HISTORICAL_SEPARATE_OVERVIEW"
 			+ " where CONTRACT in (2000, 4000) and WO_STATUS_ID = 'CANCELED' and REAL_F_DATE > add_months(SYSDATE, -12)";
     
@@ -113,7 +113,7 @@ public class BatchConfiguration {
     	writer.setHeaderCallback(new FlatFileHeaderCallback(){
 			@Override
 			public void writeHeader(Writer writer) throws IOException {
-				writer.write("Nº OT;Estado;OT Madre;Finalización Real;Planta OT;Subestado planif;Com int pla;Fin Prog;Inicio Prog;Componente;Org Mant;Tipo parada;Tipo Trabajo;Prioridad;Tarea;Clase Seg;Fecha Registro;Firma paq trab;Resp.Tarea;Confirmacion 1;Planifica;Com int pro;Recinto;Pos.en Tab.;Com pla pro;Com imp pla;Com imp pro;Requiere Paq Trabajo;Palabra clave;Notas Motivo;Equipos Indisponibles;Requiere qc;Novedad Semanal;Agrup prog");
+				writer.write("Nº OT;Estado;OT Madre;Finalización Real;Planta OT;Subestado planif;Com int pla;Fin Prog;Inicio Prog;Componente;Org Mant;Tipo parada;Tipo Trabajo;Prioridad;Tarea;Clase Seg;Fecha Registro;Firma paq trab;Resp.Tarea;Confirmacion 1;Planifica;Com int pro;Recinto;Pos.en Tab.;Com pla pro;Com imp pla;Com imp pro;Requiere Paq Trabajo;Palabra clave;Notas Motivo;Equipos Indisponibles;Requiere qc;Novedad Semanal;Agrup prog;Tipo paq trab;Coment otras areas;Revision Paq Trab");
 			}
     	});
 
@@ -121,7 +121,7 @@ public class BatchConfiguration {
     	delLineAgg.setDelimiter(";");
     	
     	BeanWrapperFieldExtractor<Ot> fieldExtractor = new BeanWrapperFieldExtractor<Ot>();
-    	fieldExtractor.setNames(new String[] {"ot", "estado", "otMadre", "finalizacionReal", "plantaOt", "subestadoPlanif", "comIntPla", "finProg", "inicioProg", "componente", "orgMant", "tipoParada", "tipoTrabajo", "prioridad", "tarea", "claseSeg", "fechaRegistro", "firmaPaqTrab", "respTarea", "confirmacion1", "planifica", "comIntPro", "recinto", "posEnTab", "comPlaPro", "comImpPla", "comImpPro", "requierePaqTrabajo", "palabraClave", "notasMotivo", "equiposIndisponibles", "requiereQc", "novedadSemanal", "agrupProg"});
+    	fieldExtractor.setNames(new String[] {"ot", "estado", "otMadre", "finalizacionReal", "plantaOt", "subestadoPlanif", "comIntPla", "finProg", "inicioProg", "componente", "orgMant", "tipoParada", "tipoTrabajo", "prioridad", "tarea", "claseSeg", "fechaRegistro", "firmaPaqTrab", "respTarea", "confirmacion1", "planifica", "comIntPro", "recinto", "posEnTab", "comPlaPro", "comImpPla", "comImpPro", "requierePaqTrabajo", "palabraClave", "notasMotivo", "equiposIndisponibles", "requiereQc", "novedadSemanal", "agrupProg", "tipoPaqTrab", "comentOtrasAreas", "revisionPaqTrab"});
     	
     	delLineAgg.setFieldExtractor(fieldExtractor);
     	writer.setLineAggregator(delLineAgg);
