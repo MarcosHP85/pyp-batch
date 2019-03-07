@@ -5,7 +5,7 @@
 
     <groupId>org.springframework</groupId>
     <artifactId>pyp-batch</artifactId>
-    <version>0.1.4-parada</version>
+    <version>0.1.5-parada</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -46,6 +46,9 @@ public class OtRowMapper implements RowMapper<Ot> {
 		ot.setRequiereQc(rs.getString("REQUIERE_QC"));
 		ot.setNovedadSemanal(rs.getString("NOVEDAD_SEMANAL"));
 		ot.setAgrupProg(rs.getString("AGRUP_PROG"));
+		ot.setTipoPaqTrab(rs.getString("TIPO_PAQ_TRAB"));
+		ot.setComentOtrasAreas(rs.getString("COMENT_OTRAS_AREAS"));
+		ot.setRevisionPaqTrab(rs.getString("REVISION_PAQ_TRAB"));
 
 		return ot;
 	}

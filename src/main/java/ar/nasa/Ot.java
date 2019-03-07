@@ -38,6 +38,9 @@ public class Ot {
 	private String requiereQc;
 	private String novedadSemanal;
 	private String agrupProg;
+	private String tipoPaqTrab;
+	private String comentOtrasAreas;
+	private String revisionPaqTrab;
 	
 	public Long getOt() {
 		return ot;
@@ -243,6 +246,24 @@ public class Ot {
     public void setAgrupProg(String agrupProg) {
         this.agrupProg = agrupProg;
     }
+    public String getTipoPaqTrab() {
+        return tipoPaqTrab;
+    }
+    public void setTipoPaqTrab(String tipoPaqTrab) {
+        this.tipoPaqTrab = tipoPaqTrab;
+    }
+    public String getComentOtrasAreas() {
+        return comentOtrasAreas;
+    }
+    public void setComentOtrasAreas(String comentOtrasAreas) {
+        this.comentOtrasAreas = comentOtrasAreas;
+    }
+    public String getRevisionPaqTrab() {
+        return revisionPaqTrab;
+    }
+    public void setRevisionPaqTrab(String revisionPaqTrab) {
+        this.revisionPaqTrab = revisionPaqTrab;
+    }
 
     @Override
     public String toString() {
@@ -281,6 +302,9 @@ public class Ot {
                 ", requiereQc='" + requiereQc + '\'' +
                 ", novedadSemanal='" + novedadSemanal + '\'' +
                 ", agrupProg='" + agrupProg + '\'' +
+                ", tipoPaqTrab='" + tipoPaqTrab + '\'' +
+                ", comentOtrasAreas='" + comentOtrasAreas + '\'' +
+                ", revisionPaqTrab='" + revisionPaqTrab + '\'' +
                 '}';
     }
 }
